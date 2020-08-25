@@ -33,6 +33,7 @@ FrameDrawer::FrameDrawer(Map* pMap):mpMap(pMap)
 {
     mState=Tracking::SYSTEM_NOT_READY;
     mIm = cv::Mat(480,640,CV_8UC3, cv::Scalar(0,0,0));
+    kfs_publisher_ = n.advertise<std_msgs::UInt32>("/orb_slam2_mono/kfs_number",1);
 }
 
 cv::Mat FrameDrawer::DrawFrame()
@@ -142,6 +143,7 @@ void FrameDrawer::DrawTextInfo(cv::Mat &im, int nState, cv::Mat &imText)
         int nKFs = mpMap->KeyFramesInMap();
         int nMPs = mpMap->MapPointsInMap();
         s << "KFs: " << nKFs << ", MPs: " << nMPs << ", Matches: " << mnTracked;
+        kfs_publisher_.publish(mnTracked);
         if(mnTrackedVO>0)
             s << ", + VO matches: " << mnTrackedVO;
     }

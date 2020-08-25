@@ -30,6 +30,8 @@
 
 #include<mutex>
 
+#include <ros/ros.h>
+#include "std_msgs/UInt32.h"
 
 namespace ORB_SLAM2
 {
@@ -65,6 +67,10 @@ protected:
     Map* mpMap;
 
     std::mutex mMutex;
+
+private:
+    ros::NodeHandle n;
+    ros::Publisher kfs_publisher_;
 };
 
 } //namespace ORB_SLAM
