@@ -15,7 +15,7 @@
        <param name="settings_file" type="string" value="$(find drone_dev)/camera/bebop2ORB_SLAM2.yaml" />
        <param name="voc_file" type="string" value="$(find orb_slam2_ros)/orb_slam2/Vocabulary/ORBvoc.txt" />
 
-       <param name="pointcloud_frame_id" type="string" value="world" />
+       <param name="pointcloud_frame_id" type="string" value="odom" />
        <param name="camera_frame_id" type="string" value="orb_slam2" />
        <param name="min_num_kf_in_map" type="int" value="5" />
   </node>
